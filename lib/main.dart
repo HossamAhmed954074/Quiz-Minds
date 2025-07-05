@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: 'Quiz Minds',
-     routerConfig: AppRouter.router ,
+      routerConfig: AppRouter.router,
     );
   }
 }

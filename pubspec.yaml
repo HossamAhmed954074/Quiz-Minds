@@ -51,14 +51,14 @@ flutter_native_splash:
   android: true
   ios: true
   color: "#F5F5F5"
-  image: assets/images/logo.png
+  image: assets/images/logo/logo_light_mode_under12.png
   color_dark: "#1C1C1C"
-  image_dark: assets/images/logo_dark.png
+  image_dark: assets/images/logo/logo_dark_mode_under12.png
   android_12:
     color: "#F5F5F5"
-    image: assets/images/logo_2.png
+    image: assets/images/logo/logo_light_mode_above12.png
     color_dark: "#1C1C1C"
-    image_dark: assets/images/logo_dark_2.png
+    image_dark: assets/images/logo/logo_dark_mode_above12.png
 
   web: false
 
@@ -76,6 +76,7 @@ flutter:
   assets:
     - assets/images/
     - assets/images/onboarding/
+    - assets/images/logo/
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
