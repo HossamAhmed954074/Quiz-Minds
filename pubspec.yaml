@@ -34,6 +34,7 @@ dependencies:
   firebase_core: ^3.15.1
   flutter:
     sdk: flutter
+  flutter_native_splash: ^2.4.6
   go_router: ^16.0.0
   image_picker: ^1.1.2
   lottie: ^3.3.1
@@ -44,6 +45,27 @@ dev_dependencies:
   flutter_lints: ^5.0.0
   flutter_test:
     sdk: flutter
+
+flutter_native_splash:
+  android: true
+  ios: true
+  color : "#F5F5F5"
+  image: assets/images/logo.png
+  color_dark: "#1C1C1C"
+  image_dark: assets/images/logo_dark.png
+  android_12:
+    color: "#F5F5F5"
+    image: assets/images/logo_2.png
+    color_dark: "#1C1C1C"
+    image_dark: assets/images/logo_dark_2.png
+
+  web: false
+    
+
+
+
+    
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
