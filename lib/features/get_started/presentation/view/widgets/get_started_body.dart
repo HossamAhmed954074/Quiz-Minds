@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:quiz_minds/core/router/app_router.dart';
 import 'package:quiz_minds/core/utils/assets.dart';
 import 'package:quiz_minds/core/utils/text_constant.dart';
 import 'package:quiz_minds/core/utils/text_style.dart';
@@ -49,7 +51,9 @@ class GetStartedBody extends StatelessWidget {
             SizedBox(height: 10),
             ElvatedButtonCustomWidget(
               text: TextConstants.signInButton,
-              onPressed: () {},
+              onPressed: () {
+                GoRouter.of(context).push(AppRouter.kAuthintcationScreen);
+              },
             ),
             SizedBox(height: 10),
             OutlinedTextButtonCustomWidget(

@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:quiz_minds/features/auth/presentation/view/screens/auth_screen.dart';
 import 'package:quiz_minds/features/get_started/presentation/view/screens/get_started_screen.dart';
 import 'package:quiz_minds/features/onboarding/presentation/view/screens/onboarding_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -6,6 +7,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 abstract class AppRouter {
   static const kOnboardingScreen = '/';
   static const kGetStartedScreen = '/get-started';
+  static const kAuthintcationScreen = '/authintication';
+
 
   static final GoRouter router = GoRouter(
     routes: [
@@ -25,6 +28,10 @@ abstract class AppRouter {
       GoRoute(
         path: kGetStartedScreen,
         builder: (context, state) => const GetStartedScreen(),
+      ),
+      GoRoute(
+        path: kAuthintcationScreen,
+        builder: (context, state) => const AuthScreen(),
       ),
     ],
   );
