@@ -7,48 +7,56 @@ import 'package:quiz_minds/features/auth/presentation/view/widgets/icon_button_c
 import 'package:quiz_minds/features/auth/presentation/view/widgets/text_field_custom.dart';
 
 class LoginBody extends StatelessWidget {
-  const LoginBody({super.key});
+  LoginBody({super.key});
+
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.all(20),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              IconButtonCustomWidget(
-                icon: FontAwesomeIcons.google,
-                onPressed: () {},
-              ),
-              SizedBox(width: 40),
-              IconButtonCustomWidget(
-                icon: FontAwesomeIcons.facebook,
-                onPressed: () {},
-              ),
-            ],
-          ),
-          SizedBox(height: 10),
-          TextFieldCustomWidget(
-            hintText: 'Email',
-            controller: TextEditingController(),
-          ),
-          SizedBox(height: 10),
-          TextFieldCustomWidget(
-            hintText: 'Password',
-            controller: TextEditingController(),
-          ),
-          SizedBox(height: 10),
-          CheckBoxRememberMe(onChanged: (p0) {}),
-          SizedBox(height: 10),
-          AuthButtonCustomWidget(
-            text: TextConstants.logInButton,
-            onPressed: () {},
-          ),
-        
-        ],
+      child: Form(
+        key: formKey,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                IconButtonCustomWidget(
+                  icon: FontAwesomeIcons.google,
+                  onPressed: () {},
+                ),
+                SizedBox(width: 40),
+                IconButtonCustomWidget(
+                  icon: FontAwesomeIcons.facebook,
+                  onPressed: () {},
+                ),
+              ],
+            ),
+            SizedBox(height: 10),
+            TextFieldCustomWidget(
+              hintText: 'Email',
+              controller: TextEditingController(),
+            ),
+            SizedBox(height: 10),
+            TextFieldCustomWidget(
+              hintText: 'Password',
+              controller: TextEditingController(),
+            ),
+            SizedBox(height: 10),
+            SizedBox(height: 10),
+            CheckBoxRememberMe(onChanged: (p0) {}),
+
+            SizedBox(height: 10),
+            AuthButtonCustomWidget(
+              text: TextConstants.logInButton,
+              onPressed: () {
+                if (formKey.currentState!.validate()) {}
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

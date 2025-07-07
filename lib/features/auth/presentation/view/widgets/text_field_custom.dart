@@ -19,7 +19,13 @@ class _TextFieldCustomWidgetState extends State<TextFieldCustomWidget> {
   bool obscureText = false;
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'This field is required';
+        }
+       
+      },
       controller: widget.controller,
       obscureText: obscureText,
       style: TextStyle(color: Colors.white),

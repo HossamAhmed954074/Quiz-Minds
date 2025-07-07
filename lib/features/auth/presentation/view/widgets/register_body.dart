@@ -1,45 +1,109 @@
-
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quiz_minds/core/utils/text_constant.dart';
+import 'package:quiz_minds/core/widgets/show_circle_indecator.dart';
+import 'package:quiz_minds/core/widgets/show_snak_faluire.dart';
+import 'package:quiz_minds/core/widgets/show_snak_sucess.dart';
 import 'package:quiz_minds/features/auth/presentation/view/widgets/auth_button_custom.dart';
 import 'package:quiz_minds/features/auth/presentation/view/widgets/text_field_custom.dart';
+import 'package:quiz_minds/features/auth/presentation/view_model/cubit/auth_cubit.dart';
 
-class RegisterBody extends StatelessWidget {
-  const RegisterBody({super.key});
+class RegisterBody extends StatefulWidget {
+  RegisterBody({super.key});
+
+  @override
+  State<RegisterBody> createState() => _RegisterBodyState();
+}
+
+class _RegisterBodyState extends State<RegisterBody> {
+  final TextEditingController _nameController = TextEditingController();
+
+  final TextEditingController _emailController = TextEditingController();
+
+  final TextEditingController _passwordController = TextEditingController();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  @override
+  void dispose() {
+    super.dispose();
+    _nameController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+  }
+
+  void _register() async {
+    BlocProvider.of<AuthCubit>(context).register(
+      email: _emailController.text.trim(),
+      password: _passwordController.text.trim(),
+    );
+  }
+
+  void clear() {
+    _nameController.clear();
+    _emailController.clear();
+    _passwordController.clear();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(20),
-      child: Column(
+    return BlocConsumer<AuthCubit, AuthState>(
+      listener: (context, state) {
         
-        children: [
-          SizedBox(height: 30),
-          TextFieldCustomWidget(
-            hintText: 'Name',
-            controller: TextEditingController(),
-          ),
-         
-          SizedBox(height: 15),
-          TextFieldCustomWidget(
-            hintText: 'Email',
-            controller: TextEditingController(),
-          ),
-          SizedBox(height: 15),
-          TextFieldCustomWidget(
-            hintText: 'Password',
-            controller: TextEditingController(),
-          ),
-         
-     
-          SizedBox(height: 40),
-          AuthButtonCustomWidget(
-            text: TextConstants.registerButton,
-            onPressed: () {},
-          ),
-        
-        ],
-      ),
+        if(state is AuthSuccess){
+          showSnakBarSuccess(context, 'Register Success');
+          clear();
+        }
+         if(state is AuthFailure){
+          showSnakBarFaluire(context, state.message.faliure());
+        }
+       
+      },
+      builder: (context, state) {
+        return Stack(
+          children: [
+
+            Padding(
+              padding: EdgeInsets.all(20),
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  children: [
+                    SizedBox(height: 30),
+                    TextFieldCustomWidget(
+                      hintText: 'Name',
+                      controller: _nameController,
+                    ),
+            
+                    SizedBox(height: 15),
+                    TextFieldCustomWidget(
+                      hintText: 'Email',
+                      controller: _emailController,
+                    ),
+                    SizedBox(height: 15),
+                    TextFieldCustomWidget(
+                      hintText: 'Password',
+                      controller: _passwordController,
+                    ),
+                    SizedBox(height: 15),
+                    SizedBox(height: 40),
+                    AuthButtonCustomWidget(
+                      text: TextConstants.registerButton,
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          _register();
+                          
+                        }
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            if(state is AuthLoading)
+            circleIndeactorCustom(context),
+          ],
+        );
+      },
     );
   }
 }

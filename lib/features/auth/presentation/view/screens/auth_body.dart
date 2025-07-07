@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:quiz_minds/core/utils/assets.dart';
 import 'package:quiz_minds/features/auth/presentation/view/widgets/login_body.dart';
 import 'package:quiz_minds/features/auth/presentation/view/widgets/register_body.dart';
+import 'package:quiz_minds/features/auth/presentation/view/widgets/resset_passord_body.dart';
 import 'package:quiz_minds/features/auth/presentation/view/widgets/tab_bar_custom.dart';
 
 class AuthBody extends StatefulWidget {
@@ -20,7 +21,7 @@ class _AuthBodyState extends State<AuthBody>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 2, vsync: this);
+    _tabController = TabController(length: 3,  vsync: this);
   }
 
   @override
@@ -64,7 +65,7 @@ class _AuthBodyState extends State<AuthBody>
                     Expanded(
                       child: TabBarView(
                         controller: _tabController,
-                        children: [LoginBody(), RegisterBody()],
+                        children: [LoginBody(), RegisterBody(), RessetPassord()],
                       ),
                     ),
                   ],

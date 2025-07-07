@@ -10,6 +10,8 @@ class TextConstants {
 
   static const String logInButton = 'Log In';
   static const String registerButton = 'Register';
+    static const String ressetButton = 'Reset password';
+
 
   // General texts
   static const String signInText = 'Sign In to continue or start a new quiz.';

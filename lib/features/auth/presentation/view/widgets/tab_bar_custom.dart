@@ -22,6 +22,7 @@ class TabBarCustomWidget extends StatelessWidget {
       tabs: [
         Tab(text: TextConstants.logInButton),
         Tab(text: TextConstants.registerButton),
+        Tab(text: TextConstants.ressetButton),
       ],
     );
   }
