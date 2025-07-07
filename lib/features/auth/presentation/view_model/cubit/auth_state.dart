@@ -11,3 +11,10 @@ final class AuthFailure extends AuthState {
   AuthFailure(this.message);
 }
 
+final class GoogleAuthFailure extends AuthState {
+  final String message;
+  GoogleAuthFailure(this.message);
+}
+
+
+

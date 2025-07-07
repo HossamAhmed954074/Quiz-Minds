@@ -48,3 +48,4 @@ android/app/google-services.json
 android/app/build.gradle.kts
 android/settings.gradle.kts
 firebase.json
+lib/core/secrets/secret.dart

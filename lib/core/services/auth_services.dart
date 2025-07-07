@@ -1,16 +1,25 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'dart:async';
+import 'dart:convert' show json;
+import 'package:http/http.dart' as http;
+import 'package:quiz_minds/core/secrets/secret.dart';
 
 class AuthServicess {
-  
-  User? get currentUser => FirebaseAuth.instance.currentUser;
+  final FirebaseAuth auth = FirebaseAuth.instance;
+  final googleSignIn = GoogleSignIn.instance;
+  String webClientId = Secret.webClientId;
 
-  Stream<User?> get authStateChanges => FirebaseAuth.instance.authStateChanges();
+  User? get currentUser => auth.currentUser;
+
+  Stream<User?> get authStateChanges =>
+      FirebaseAuth.instance.authStateChanges();
 
   Future<UserCredential> registerUser({
     required String email,
     required String password,
   }) async {
-    return await FirebaseAuth.instance.createUserWithEmailAndPassword(
+    return await auth.createUserWithEmailAndPassword(
       email: email,
       password: password,
     );
@@ -20,18 +29,18 @@ class AuthServicess {
     required String email,
     required String password,
   }) async {
-    return await FirebaseAuth.instance.signInWithEmailAndPassword(
+    return await auth.signInWithEmailAndPassword(
       email: email,
       password: password,
     );
   }
 
   Future<void> signOut() async {
-    await FirebaseAuth.instance.signOut();
+    await auth.signOut();
   }
 
   Future<void> resetPassword(String email) async {
-    await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+    await auth.sendPasswordResetEmail(email: email);
   }
 
   Future<void> deleteAccount({
@@ -63,4 +72,25 @@ class AuthServicess {
     await currentUser!.reauthenticateWithCredential(credential);
     await currentUser!.updatePassword(newPassword);
   }
+
+  Future<void> signInWithGoogle() async {
+
+    await googleSignIn.initialize(
+      clientId: webClientId,
+    );
+    final GoogleSignInAccount googleUser = await googleSignIn.authenticate();
+    final GoogleSignInAuthentication googleAuth =  googleUser.authentication;
+    final credential = GoogleAuthProvider.credential(
+      idToken: googleAuth.idToken,
+    );
+    await auth.signInWithCredential(credential);
+
+  }
+
+  signOutWithGoogle() async {
+    await googleSignIn.signOut();
+  }
+
+  
 }
+
