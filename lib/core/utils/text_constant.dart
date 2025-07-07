@@ -7,6 +7,10 @@ class TextConstants {
   static const String signInButton = 'Sign In';
   static const String startQuizButton = 'Start Quiz';
 
+
+  static const String logInButton = 'Log In';
+  static const String registerButton = 'Register';
+
   // General texts
   static const String signInText = 'Sign In to continue or start a new quiz.';
   static const String errorMessage = 'An error occurred. Please try again.';
