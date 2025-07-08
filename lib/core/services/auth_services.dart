@@ -72,7 +72,9 @@ class AuthServicess {
     await currentUser!.reauthenticateWithCredential(credential);
     await currentUser!.updatePassword(newPassword);
   }
-
+// final FirebaseAuth auth = FirebaseAuth.instance;
+//   final googleSignIn = GoogleSignIn.instance;
+//   String webClientId = Secret.webClientId;
   Future<void> signInWithGoogle() async {
 
     await googleSignIn.initialize(

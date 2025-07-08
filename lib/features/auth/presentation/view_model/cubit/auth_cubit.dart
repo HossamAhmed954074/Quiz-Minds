@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:meta/meta.dart';
 import 'package:quiz_minds/core/errors/firebase_faliure.dart';
+import 'package:quiz_minds/core/errors/google_signin_faliure.dart';
 import 'package:quiz_minds/core/services/auth_services.dart';
 
 part 'auth_state.dart';
@@ -46,8 +47,8 @@ class AuthCubit extends Cubit<AuthState> {
     try {
         await authServices.signInWithGoogle();
       emit(AuthSuccess());
-    }catch(e){
-      emit(GoogleAuthFailure(e.toString()));
+    }on   GoogleSignInException catch(e){
+      emit(GoogleAuthFailure(GoogleSignInExceptionHandler.handleException(e)));
     }
   
 

@@ -43,7 +43,6 @@ class _LoginBodyState extends State<LoginBody> {
     BlocProvider.of<AuthCubit>(context).googleAuth();
   }
 
-
   void clear() {
     emailController.clear();
     passwordController.clear();
@@ -56,11 +55,10 @@ class _LoginBodyState extends State<LoginBody> {
         if (state is AuthSuccess) {
           showSnakBarSuccess(context, 'Login Success');
           clear();
-         GoRouter.of(context).go(AppRouter.kHomeScreen);
+          GoRouter.of(context).go(AppRouter.kHomeScreen);
         } else if (state is AuthFailure) {
           showSnakBarFaluire(context, state.message.faliure());
-        }
-        else if (state is GoogleAuthFailure) {
+        } else if (state is GoogleAuthFailure) {
           showSnakBarFaluire(context, state.message);
         }
       },
