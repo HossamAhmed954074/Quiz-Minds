@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_minds/core/utils/text_style.dart';
+import 'package:quiz_minds/features/profile/presentation/view/widgets/info_section.dart';
+import 'package:quiz_minds/features/profile/presentation/view/widgets/setting_section.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -6,9 +9,35 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(child: Center(
-        child: Text('Profile Screen'),
-      )),
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        title: Text('My Profile', style: AppTextStyles.appTitle),
+        centerTitle: true,
+        automaticallyImplyLeading: false,
+      ),
+      body: SafeArea(
+        child: Container(
+          color: Colors.white, // Background color set to white
+          padding: EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(height: 20),
+              // Info Section
+              InfoSection(),
+              SizedBox(height: 30),
+              // Settings Section
+              SettingsSection(),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
+
+
+
+
+

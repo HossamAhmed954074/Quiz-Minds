@@ -57,7 +57,9 @@ class GetStartedBody extends StatelessWidget {
             ),
             SizedBox(height: 10),
             OutlinedTextButtonCustomWidget(
-              onPressed: () {},
+              onPressed: () {
+                GoRouter.of(context).push(AppRouter.kNavigationBar);
+              },
               text: TextConstants.startQuizButton,
             ),
           ],

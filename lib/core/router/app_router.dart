@@ -4,6 +4,7 @@ import 'package:quiz_minds/core/utils/get_it.dart';
 import 'package:quiz_minds/features/auth/presentation/view/screens/auth_screen.dart';
 import 'package:quiz_minds/features/auth/presentation/view_model/cubit/auth_cubit.dart';
 import 'package:quiz_minds/features/get_started/presentation/view/screens/get_started_screen.dart';
+import 'package:quiz_minds/features/home/presentation/view/screens/bottom_nav.dart';
 import 'package:quiz_minds/features/home/presentation/view/screens/home_screen.dart';
 import 'package:quiz_minds/features/onboarding/presentation/view/screens/onboarding_screen.dart';
 import 'package:quiz_minds/features/profile/presentation/view/screens/profile_screen.dart';
@@ -16,7 +17,7 @@ abstract class AppRouter {
   static const kAuthintcationScreen = '/authintication';
   static const kHomeScreen = '/home';
   static const kProfileScreen = '/profile';
-
+  static const kNavigationBar = '/navigation';
 
   static final GoRouter router = GoRouter(
     routes: [
@@ -38,8 +39,8 @@ abstract class AppRouter {
         builder: (context, state) => const GetStartedScreen(),
       ),
       GoRoute(
-        path: kHomeScreen,
-        builder: (context, state) => const HomeScreen(),
+        path: kNavigationBar,
+        builder: (context, state) => const BottomNav(),
       ),
       GoRoute(
         path: kProfileScreen,

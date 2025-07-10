@@ -55,7 +55,7 @@ class _LoginBodyState extends State<LoginBody> {
         if (state is AuthSuccess) {
           showSnakBarSuccess(context, 'Login Success');
           clear();
-          GoRouter.of(context).go(AppRouter.kHomeScreen);
+          GoRouter.of(context).go(AppRouter.kNavigationBar);
         } else if (state is AuthFailure) {
           showSnakBarFaluire(context, state.message.faliure());
         } else if (state is GoogleAuthFailure) {
@@ -80,11 +80,6 @@ class _LoginBodyState extends State<LoginBody> {
                           onPressed: () {
                             googleAuth();
                           },
-                        ),
-                        SizedBox(width: 40),
-                        IconButtonCustomWidget(
-                          icon: FontAwesomeIcons.facebook,
-                          onPressed: () {},
                         ),
                       ],
                     ),

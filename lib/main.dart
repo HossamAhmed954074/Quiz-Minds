@@ -5,8 +5,9 @@ import 'package:quiz_minds/core/router/app_router.dart';
 import 'package:quiz_minds/core/utils/get_it.dart';
 import 'package:quiz_minds/firebase_options.dart';
 
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   WidgetsFlutterBinding.ensureInitialized();
