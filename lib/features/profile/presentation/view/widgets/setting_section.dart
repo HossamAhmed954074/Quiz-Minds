@@ -1,8 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:quiz_minds/core/router/app_router.dart';
 import 'package:quiz_minds/features/profile/presentation/view/widgets/build_setting_opthion.dart';
+import 'package:quiz_minds/features/profile/presentation/view_model/cubit/profile_cubit.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class SettingsSection extends StatelessWidget {
+class SettingsSection extends StatefulWidget {
   const SettingsSection({super.key});
+
+  @override
+  State<SettingsSection> createState() => _SettingsSectionState();
+}
+
+class _SettingsSectionState extends State<SettingsSection> {
+  _onGetStarted() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    sharedPreferences.setBool('onboarding', false);
+  }
+
+  logOut() async {
+    await BlocProvider.of<ProfileCubit>(context).logOut();
+    await _onGetStarted();
+    if (mounted) {
+      GoRouter.of(context).go(AppRouter.kOnboardingScreen);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +59,34 @@ class SettingsSection extends StatelessWidget {
           text: "About this app",
         ),
         BuildSettingsOption(
-          onPressed: () {},
+          onPressed: () async {
+            showDialog(
+              context: context,
+              builder: (context) {
+                return AlertDialog(
+                  title: Text('Logout'),
+                  content: Text('Are you sure you want to logout?'),
+                  actions: [
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: Text('Cancel'),
+                    ),
+                    TextButton(
+                      onPressed: () async {
+                        logOut();
+                      },
+                      child: Text(
+                        'Logout',
+                        style: TextStyle(color: Colors.red),
+                      ),
+                    ),
+                  ],
+                );
+              },
+            );
+          },
           icon: Icons.logout,
           text: "Logout",
           iconColor: Colors.red,

@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:quiz_minds/core/services/auth_services.dart';
+import 'package:quiz_minds/core/utils/get_it.dart';
 import 'package:quiz_minds/core/utils/text_style.dart';
 import 'package:quiz_minds/features/profile/presentation/view/widgets/info_section.dart';
 import 'package:quiz_minds/features/profile/presentation/view/widgets/setting_section.dart';
+import 'package:quiz_minds/features/profile/presentation/view_model/cubit/profile_cubit.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -28,7 +32,10 @@ class ProfileScreen extends StatelessWidget {
               InfoSection(),
               SizedBox(height: 30),
               // Settings Section
-              SettingsSection(),
+              BlocProvider(
+                create: (context) => ProfileCubit(getIt<AuthServicess>()),
+                child: SettingsSection(),
+              ),
             ],
           ),
         ),
@@ -36,8 +43,3 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 }
-
-
-
-
-

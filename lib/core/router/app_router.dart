@@ -8,6 +8,7 @@ import 'package:quiz_minds/features/home/presentation/view/screens/bottom_nav.da
 import 'package:quiz_minds/features/home/presentation/view/screens/home_screen.dart';
 import 'package:quiz_minds/features/onboarding/presentation/view/screens/onboarding_screen.dart';
 import 'package:quiz_minds/features/profile/presentation/view/screens/profile_screen.dart';
+import 'package:quiz_minds/features/profile/presentation/view_model/cubit/profile_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -44,7 +45,10 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: kProfileScreen,
-        builder: (context, state) => const ProfileScreen(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => ProfileCubit(getIt<AuthServicess>()),
+          child: const ProfileScreen(),
+        ),
       ),
       GoRoute(
         path: kAuthintcationScreen,
