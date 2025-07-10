@@ -1,7 +1,14 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quiz_minds/core/router/app_router.dart';
+import 'package:quiz_minds/core/services/auth_services.dart';
+import 'package:quiz_minds/core/utils/get_it.dart';
+import 'package:quiz_minds/features/profile/presentation/view/widgets/alert_dailog_custom.dart';
+import 'package:quiz_minds/features/profile/presentation/view/widgets/alert_dailog_custom_Delete_account.dart';
+import 'package:quiz_minds/features/profile/presentation/view/widgets/alert_dailog_custom_user_name.dart';
 import 'package:quiz_minds/features/profile/presentation/view/widgets/build_setting_opthion.dart';
 import 'package:quiz_minds/features/profile/presentation/view_model/cubit/profile_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -38,23 +45,16 @@ class _SettingsSectionState extends State<SettingsSection> {
         ),
         Divider(color: Colors.black),
         SizedBox(height: 10),
+
+        if(AuthServicess().currentUser != null)
+          checckProvider(),
+        
+
         BuildSettingsOption(
-          onPressed: () {},
-          icon: Icons.edit,
-          text: "Update username",
-        ),
-        BuildSettingsOption(
-          onPressed: () {},
-          icon: Icons.lock,
-          text: "Change password",
-        ),
-        BuildSettingsOption(
-          onPressed: () {},
-          icon: Icons.delete,
-          text: "Delete my account",
-        ),
-        BuildSettingsOption(
-          onPressed: () {},
+          onPressed: () {
+           // todo: Navigate to the app's privacy policy
+            GoRouter.of(context).go(AppRouter.kPrivacyPolicyScreen);
+          },
           icon: Icons.info,
           text: "About this app",
         ),
@@ -94,4 +94,57 @@ class _SettingsSectionState extends State<SettingsSection> {
       ],
     );
   }
+
+  Widget checckProvider() {
+    return Column(
+      children: [
+        BuildSettingsOption(
+          onPressed: () {
+            showDialog(
+              context: context,
+              builder: (context) {
+                return BlocProvider(
+                  create: (context) => ProfileCubit(getIt<AuthServicess>()),
+                  child: AlertDaialogCustomUpdateUserName(),
+                );
+              },
+            );
+          },
+          icon: Icons.edit,
+          text: "Update username",
+        ),
+        BuildSettingsOption(
+          onPressed: () {
+            showDialog(
+              context: context,
+              builder: (context) {
+                return BlocProvider(
+                  create: (context) => ProfileCubit(getIt<AuthServicess>()),
+                  child: AlertDialogCustomWidget(),
+                );
+              },
+            );
+          },
+          icon: Icons.lock,
+          text: "Change password",
+        ),
+        BuildSettingsOption(
+          onPressed: () {
+            showDialog(
+              context: context,
+              builder: (context) {
+                return BlocProvider(
+                  create: (context) => ProfileCubit(getIt<AuthServicess>()),
+                  child: AlertDaialogCustomDeleteAccount(),
+                );
+              },
+            );
+          },
+          icon: Icons.delete,
+          text: "Delete my account",
+        ),
+      ],
+    );
+  }
 }
+

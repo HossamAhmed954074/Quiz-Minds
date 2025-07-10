@@ -7,6 +7,7 @@ import 'package:quiz_minds/features/get_started/presentation/view/screens/get_st
 import 'package:quiz_minds/features/home/presentation/view/screens/bottom_nav.dart';
 import 'package:quiz_minds/features/home/presentation/view/screens/home_screen.dart';
 import 'package:quiz_minds/features/onboarding/presentation/view/screens/onboarding_screen.dart';
+import 'package:quiz_minds/features/profile/presentation/view/screens/privacy_policy.dart';
 import 'package:quiz_minds/features/profile/presentation/view/screens/profile_screen.dart';
 import 'package:quiz_minds/features/profile/presentation/view_model/cubit/profile_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -19,6 +20,7 @@ abstract class AppRouter {
   static const kHomeScreen = '/home';
   static const kProfileScreen = '/profile';
   static const kNavigationBar = '/navigation';
+  static const kPrivacyPolicyScreen = '/privacy-policy';
 
   static final GoRouter router = GoRouter(
     routes: [
@@ -49,6 +51,10 @@ abstract class AppRouter {
           create: (context) => ProfileCubit(getIt<AuthServicess>()),
           child: const ProfileScreen(),
         ),
+      ),
+      GoRoute(
+        path: kPrivacyPolicyScreen,
+        builder: (context, state) => const PrivacyPolicyScreen(),
       ),
       GoRoute(
         path: kAuthintcationScreen,

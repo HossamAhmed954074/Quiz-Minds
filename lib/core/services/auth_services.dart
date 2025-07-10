@@ -10,6 +10,38 @@ class AuthServicess {
 
   User? get currentUser => auth.currentUser;
 
+  UserInfo get userInfo {
+    if (auth.currentUser != null) {
+      return auth.currentUser!.providerData[0];
+    }
+
+    return UserInfo.fromJson({
+      "providerId": '',
+      "uid": "anonymous",
+      "displayName": "Anonymous User",
+      "email": 'null',
+      "photoURL": null,
+      "phoneNumber": '',
+      "isAnonymous": true,
+      "tenantId": '',
+      "metadata": {"creationTime": '', "lastSignInTime": ''},
+      "providerData": [],
+      "refreshToken": '',
+      "emailVerified": false,
+      "stsTokenManager": {
+        "accessToken": '',
+        "expirationTime": '',
+        "refreshToken": '',
+      },
+      "idToken": '',
+      "apiKey": '',
+      "appName": '',
+      "isEmailVerified": false,
+      "phoneNumberVerified": false,
+      "isAnonymousUser": true,
+    });
+  }
+
   Stream<User?> get authStateChanges =>
       FirebaseAuth.instance.authStateChanges();
 
@@ -70,27 +102,21 @@ class AuthServicess {
     await currentUser!.reauthenticateWithCredential(credential);
     await currentUser!.updatePassword(newPassword);
   }
-// final FirebaseAuth auth = FirebaseAuth.instance;
-//   final googleSignIn = GoogleSignIn.instance;
-//   String webClientId = Secret.webClientId;
-  Future<void> signInWithGoogle() async {
 
-    await googleSignIn.initialize(
-      clientId: webClientId,
-    );
+  // final FirebaseAuth auth = FirebaseAuth.instance;
+  //   final googleSignIn = GoogleSignIn.instance;
+  //   String webClientId = Secret.webClientId;
+  Future<void> signInWithGoogle() async {
+    await googleSignIn.initialize(clientId: webClientId);
     final GoogleSignInAccount googleUser = await googleSignIn.authenticate();
-    final GoogleSignInAuthentication googleAuth =  googleUser.authentication;
+    final GoogleSignInAuthentication googleAuth = googleUser.authentication;
     final credential = GoogleAuthProvider.credential(
       idToken: googleAuth.idToken,
     );
     await auth.signInWithCredential(credential);
-
   }
 
   signOutWithGoogle() async {
     await googleSignIn.signOut();
   }
-
-  
 }
-

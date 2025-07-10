@@ -1,4 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:quiz_minds/core/services/auth_services.dart';
 
 class InfoSection extends StatelessWidget {
   const InfoSection({super.key});
@@ -11,15 +13,25 @@ class InfoSection extends StatelessWidget {
         CircleAvatar(
           radius: 60,
           backgroundColor: Colors.grey[300],
-          child: Icon(Icons.face, size: 60, color: Colors.white),
+          child: CachedNetworkImage(
+            imageUrl: AuthServicess().userInfo.photoURL ?? '',
+            imageBuilder: (context, imageProvider) => Container(
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                image: DecorationImage(image: imageProvider, fit: BoxFit.cover),
+              ),
+            ),
+            placeholder: (context, url) => CircularProgressIndicator(),
+            errorWidget: (context, url, error) => Icon(Icons.face, size: 60, color: Colors.grey[700]),
+          ),
         ),
         SizedBox(height: 10),
         Text(
-          "Flutter Pro",
+          AuthServicess().currentUser?.displayName ?? 'No Name',
           style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
         ),
         Text(
-          "Flutter@pro.com",
+          AuthServicess().currentUser?.email ?? 'No Email',
           style: TextStyle(fontSize: 16, color: Colors.grey),
         ),
       ],

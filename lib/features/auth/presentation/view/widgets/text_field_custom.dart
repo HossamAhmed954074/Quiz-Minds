@@ -30,7 +30,10 @@ class _TextFieldCustomWidgetState extends State<TextFieldCustomWidget> {
       obscureText: obscureText,
       style: TextStyle(color: Colors.white),
       decoration: InputDecoration(
-        suffixIcon: widget.hintText == 'Password'
+        suffixIcon: widget.hintText == 'Password' ||
+                widget.hintText == 'Confirm Password' ||
+                widget.hintText == 'Old Password' ||
+                widget.hintText == 'New Password'
             ? obscureText == false
                   ? IconButton(
                       onPressed: () {

@@ -24,19 +24,21 @@ class ProfileScreen extends StatelessWidget {
         child: Container(
           color: Colors.white, // Background color set to white
           padding: EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SizedBox(height: 20),
-              // Info Section
-              InfoSection(),
-              SizedBox(height: 30),
-              // Settings Section
-              BlocProvider(
-                create: (context) => ProfileCubit(getIt<AuthServicess>()),
-                child: SettingsSection(),
-              ),
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(height: 20),
+                // Info Section
+                InfoSection(),
+                SizedBox(height: 30),
+                // Settings Section
+                BlocProvider(
+                  create: (context) => ProfileCubit(getIt<AuthServicess>()),
+                  child: SettingsSection(),
+                ),
+              ],
+            ),
           ),
         ),
       ),
