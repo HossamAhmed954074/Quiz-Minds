@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 
-circleIndeactorCustom(BuildContext context) {
+circleIndeactorCustom(BuildContext context,[ Color? color= Colors.green]) {
   return Center(
     child: SizedBox(
       width: 150,
@@ -10,7 +10,7 @@ circleIndeactorCustom(BuildContext context) {
         indicatorType: Indicator.ballClipRotateMultiple,
 
         /// Required, The loading type of the widget
-        colors: const [Colors.green],
+        colors:  [color!],
 
         /// Optional, The color collections
         strokeWidth: 2,
