@@ -27,6 +27,13 @@ class _TextFieldCustomWidgetState extends State<TextFieldCustomWidget> {
         if (value == null || value.isEmpty) {
           return 'This field is required';
         }
+        if (widget.hintText == 'Email' && !RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
+          return 'Please enter a valid email';
+        }
+        if (widget.hintText == 'Password' && value.length < 6) {
+          return 'Password must be at least 6 characters';
+        }
+        return null;
        
       },
       controller: widget.controller,

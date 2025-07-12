@@ -22,8 +22,7 @@ class GoogleSignInExceptionHandler {
         return 'User mismatch: ${e.description}';
       case GoogleSignInExceptionCode.unknownError:
         return 'Unknown error: ${e.description}';
-      default:
-        return 'GoogleSignInException ${e.code}: ${e.description}';
+     
     }
   }
 }

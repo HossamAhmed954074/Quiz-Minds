@@ -8,7 +8,7 @@ import 'package:quiz_minds/core/widgets/show_circle_indecator.dart';
 import 'package:quiz_minds/core/widgets/show_snak_faluire.dart';
 import 'package:quiz_minds/core/widgets/show_snak_sucess.dart';
 import 'package:quiz_minds/features/auth/presentation/view/widgets/auth_button_custom.dart';
-import 'package:quiz_minds/features/auth/presentation/view/widgets/check_boxs_remeber.dart';
+
 import 'package:quiz_minds/features/auth/presentation/view/widgets/icon_button_custom.dart';
 import 'package:quiz_minds/features/auth/presentation/view/widgets/text_field_custom.dart';
 import 'package:quiz_minds/features/auth/presentation/view_model/cubit/auth_cubit.dart';

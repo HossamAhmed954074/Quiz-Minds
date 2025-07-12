@@ -5,7 +5,7 @@ import 'package:quiz_minds/features/auth/presentation/view/screens/auth_screen.d
 import 'package:quiz_minds/features/auth/presentation/view_model/cubit/auth_cubit.dart';
 import 'package:quiz_minds/features/get_started/presentation/view/screens/get_started_screen.dart';
 import 'package:quiz_minds/features/home/presentation/view/screens/bottom_nav.dart';
-import 'package:quiz_minds/features/home/presentation/view/screens/home_screen.dart';
+
 import 'package:quiz_minds/features/onboarding/presentation/view/screens/onboarding_screen.dart';
 import 'package:quiz_minds/features/profile/presentation/view/screens/privacy_policy.dart';
 import 'package:quiz_minds/features/profile/presentation/view/screens/profile_screen.dart';
