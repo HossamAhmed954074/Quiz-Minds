@@ -13,8 +13,8 @@ class BottomNav extends StatefulWidget {
 class _BottomNavState extends State<BottomNav> {
   int _selectedIndex = 0;
   List<Widget> icons = [
-    Icon(Icons.home_outlined),
-    Icon(Icons.favorite_outlined),
+    Icon(Icons.category_outlined),
+    Icon(Icons.leaderboard_outlined),
     Icon(Icons.person_outlined),
   ];
 

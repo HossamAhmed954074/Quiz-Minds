@@ -9,7 +9,7 @@ import 'package:quiz_minds/features/auth/presentation/view/widgets/text_field_cu
 import 'package:quiz_minds/features/auth/presentation/view_model/cubit/auth_cubit.dart';
 
 class RegisterBody extends StatefulWidget {
-  RegisterBody({super.key});
+  const RegisterBody({super.key});
 
   @override
   State<RegisterBody> createState() => _RegisterBodyState();
@@ -35,6 +35,7 @@ class _RegisterBodyState extends State<RegisterBody> {
     BlocProvider.of<AuthCubit>(context).register(
       email: _emailController.text.trim(),
       password: _passwordController.text.trim(),
+      name: _nameController.text.trim(),
     );
   }
 

@@ -17,6 +17,9 @@ class TextFieldCustomWidget extends StatefulWidget {
 
 class _TextFieldCustomWidgetState extends State<TextFieldCustomWidget> {
   bool obscureText = false;
+
+
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -28,28 +31,29 @@ class _TextFieldCustomWidgetState extends State<TextFieldCustomWidget> {
       },
       controller: widget.controller,
       obscureText: obscureText,
+      cursorColor: Colors.white,
       style: TextStyle(color: Colors.white),
       decoration: InputDecoration(
         suffixIcon: widget.hintText == 'Password' ||
                 widget.hintText == 'Confirm Password' ||
                 widget.hintText == 'Old Password' ||
                 widget.hintText == 'New Password'
-            ? obscureText == false
+            ? obscureText == true
                   ? IconButton(
                       onPressed: () {
                         setState(() {
-                          obscureText = true;
+                          obscureText = !obscureText;
                         });
                       },
-                      icon: Icon(Icons.visibility, color: Colors.white),
+                      icon: Icon(Icons.visibility_off, color: Colors.white),
                     )
                   : IconButton(
                       onPressed: () {
                         setState(() {
-                          obscureText = false;
+                        obscureText = !obscureText;
                         });
                       },
-                      icon: Icon(Icons.visibility_off, color: Colors.white),
+                      icon: Icon(Icons.visibility, color: Colors.white),
                     )
             : SizedBox.shrink(),
         hintText: widget.hintText,

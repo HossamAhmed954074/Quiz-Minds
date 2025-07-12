@@ -12,10 +12,10 @@ class AuthCubit extends Cubit<AuthState> {
   AuthCubit(this.authServices) : super(AuthInitial());
   AuthServicess authServices;
   
-  register({required String email, required String password})async{
+  register({required String email, required String password,required String name})async{
     emit(AuthLoading());
     try {
-        await authServices.registerUser(email: email, password: password);
+        await authServices.registerUser(email: email, password: password, name: name);
       emit(AuthSuccess());
     }on FirebaseAuthException catch(e){
       emit(AuthFailure(FirebaseFaliure(e.code)));

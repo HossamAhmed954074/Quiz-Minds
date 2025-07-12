@@ -94,7 +94,7 @@ class _LoginBodyState extends State<LoginBody> {
                       controller: passwordController,
                     ),
                     SizedBox(height: 10),
-                    CheckBoxRememberMe(onChanged: (p0) {}),
+                  //  CheckBoxRememberMe(onChanged: (p0) {}),
                     SizedBox(height: 10),
                     AuthButtonCustomWidget(
                       text: TextConstants.logInButton,

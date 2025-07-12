@@ -2,9 +2,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'dart:async';
 import 'package:quiz_minds/core/secrets/secret.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AuthServicess {
   final FirebaseAuth auth = FirebaseAuth.instance;
+  final FirebaseFirestore firestore = FirebaseFirestore.instance;
+
   final googleSignIn = GoogleSignIn.instance;
   String webClientId = Secret.webClientId;
 
@@ -48,11 +51,21 @@ class AuthServicess {
   Future<UserCredential> registerUser({
     required String email,
     required String password,
+    required String name,
   }) async {
-    return await auth.createUserWithEmailAndPassword(
+    var user = await auth.createUserWithEmailAndPassword(
       email: email,
       password: password,
     );
+
+    await firestore.collection('users').doc(auth.currentUser!.uid).set({
+      'userName': name,
+      'email': email,
+      'uid': auth.currentUser!.uid,
+      'createdAt': DateTime.now(),
+    });
+
+    return user;
   }
 
   Future<UserCredential> loginUser({
@@ -114,6 +127,12 @@ class AuthServicess {
       idToken: googleAuth.idToken,
     );
     await auth.signInWithCredential(credential);
+    await firestore.collection('users').doc(auth.currentUser!.uid).set({
+      'userName': googleUser.displayName,
+      'email': googleUser.email,
+      'uid': auth.currentUser!.uid,
+      'createdAt': DateTime.now(),
+    });
   }
 
   signOutWithGoogle() async {
