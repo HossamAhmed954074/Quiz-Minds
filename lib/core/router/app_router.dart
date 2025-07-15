@@ -10,6 +10,7 @@ import 'package:quiz_minds/features/onboarding/presentation/view/screens/onboard
 import 'package:quiz_minds/features/profile/presentation/view/screens/privacy_policy.dart';
 import 'package:quiz_minds/features/profile/presentation/view/screens/profile_screen.dart';
 import 'package:quiz_minds/features/profile/presentation/view_model/cubit/profile_cubit.dart';
+import 'package:quiz_minds/features/quiz/presentation/view/screens/quiz_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -21,6 +22,7 @@ abstract class AppRouter {
   static const kProfileScreen = '/profile';
   static const kNavigationBar = '/navigation';
   static const kPrivacyPolicyScreen = '/privacy-policy';
+  static const kQuizScreen = '/quiz';
 
   static final GoRouter router = GoRouter(
     routes: [
@@ -44,6 +46,10 @@ abstract class AppRouter {
       GoRoute(
         path: kNavigationBar,
         builder: (context, state) => const BottomNav(),
+      ),
+      GoRoute(
+        path: kQuizScreen,
+        builder: (context, state) => const QuizScreen(),
       ),
       GoRoute(
         path: kProfileScreen,

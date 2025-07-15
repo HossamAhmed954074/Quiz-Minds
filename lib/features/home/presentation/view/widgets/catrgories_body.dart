@@ -7,9 +7,16 @@ import 'package:quiz_minds/features/home/presentation/view/widgets/header_of_cat
 import 'package:quiz_minds/features/home/presentation/view_model/cubit/categories_cubit.dart';
 
 class CategoriesBody extends StatelessWidget {
-  const CategoriesBody({super.key});
+   CategoriesBody({super.key});
 
-  // @override
+ final List<Color> colors = [
+    Colors.blueAccent[100]!,
+    Colors.greenAccent[100]!,
+    Colors.redAccent[100]!,
+    Colors.orangeAccent[100]!,
+    Colors.purpleAccent[100]!,
+    Colors.yellowAccent[100]!,
+  ];
   @override
   Widget build(BuildContext context) {
     List<CategoryModel> categories = [];
@@ -40,6 +47,7 @@ class CategoriesBody extends StatelessWidget {
                   itemCount: categories.length,
                   itemBuilder: (context, index) {
                     return CategoryCustomWidget(
+                      color: colors[index % colors.length],
                       getCategoryModel: categories[index],
                     );
                   },

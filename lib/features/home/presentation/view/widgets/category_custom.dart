@@ -1,22 +1,33 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:quiz_minds/core/router/app_router.dart';
 import 'package:quiz_minds/core/utils/text_style.dart';
 import 'package:quiz_minds/core/widgets/show_circle_indecator.dart';
 import 'package:quiz_minds/features/home/data/category_model.dart';
 
 class CategoryCustomWidget extends StatelessWidget {
-  const CategoryCustomWidget({super.key, required this.getCategoryModel});
+  const CategoryCustomWidget({
+    super.key,
+    required this.getCategoryModel,
+    required this.color,
+  });
 
   final CategoryModel getCategoryModel;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        GoRouter.of(
+          context,
+        ).push(AppRouter.kQuizScreen, extra: getCategoryModel);
+      },
       child: Card(
         elevation: 8,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        color: Colors.blueAccent[100],
+        color: color,
         child: Column(
           children: [
             ClipRRect(
