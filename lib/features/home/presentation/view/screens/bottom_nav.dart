@@ -22,21 +22,28 @@ class _BottomNavState extends State<BottomNav> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(child: pages[_selectedIndex]),
-      extendBody: true,
-      bottomNavigationBar: CurvedNavigationBar(
-        backgroundColor: Colors.transparent,
-        buttonBackgroundColor: Colors.orangeAccent,
-        color: Colors.blueAccent,
-        index: _selectedIndex,
-        animationDuration: Duration(milliseconds: 300),
-        onTap: (index) {
-          setState(() {
-            _selectedIndex = index;
-          });
-        },
-        items: icons,
+    return SafeArea(
+      top: false,
+      bottom: true,
+
+      child: Scaffold(
+        body: SafeArea(child: pages[_selectedIndex]),
+        extendBody: true,
+        bottomNavigationBar: CurvedNavigationBar(
+          height: 60,
+          backgroundColor: Colors.transparent,
+          buttonBackgroundColor: Colors.orangeAccent,
+          color: Colors.blueAccent.shade100,
+          animationCurve: Curves.easeInOut,
+          index: _selectedIndex,
+          animationDuration:const Duration(milliseconds: 200),
+          onTap: (index) {
+            setState(() {
+              _selectedIndex = index;
+            });
+          },
+          items: icons,
+        ),
       ),
     );
   }

@@ -38,11 +38,11 @@ class _ScoreScreenState extends State<ScoreScreen> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                if(score < 50)
+                if (score < 50)
                   BadScoreBody(score: score)
                 else
                   CongratolationsScoreBody(score: score),
-              
+
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,
@@ -98,6 +98,7 @@ class CongratolationsScoreBody extends StatelessWidget {
         const Text(
           'Congratulations, Quiz Completed!',
           style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          textAlign: TextAlign.center,
         ),
         const SizedBox(height: 10),
         Text(
@@ -136,10 +137,9 @@ class CongratolationsScoreBody extends StatelessWidget {
   }
 }
 
-
 class BadScoreBody extends StatelessWidget {
   const BadScoreBody({super.key, required this.score});
-final int score;
+  final int score;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -148,8 +148,8 @@ final int score;
           children: [
             LottieBuilder.network(
               'https://lottie.host/8dbf9cd4-901f-410e-a941-ada901ece908/TuHYyKsDfC.json',
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height * 0.4,
+              width: MediaQuery.of(context).size.width * 0.4,
+              height: MediaQuery.of(context).size.height * 0.2,
               fit: BoxFit.fill,
             ),
           ],

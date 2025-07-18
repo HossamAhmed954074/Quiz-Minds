@@ -1,7 +1,7 @@
-import 'dart:math';
+import 'dart:math' hide log;
 
 import 'package:bloc/bloc.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:meta/meta.dart';
 import 'package:quiz_minds/core/services/data_services.dart';
 import 'package:quiz_minds/features/quiz/data/question_model.dart';
@@ -29,14 +29,6 @@ class QuistionsCubit extends Cubit<QuistionsState> {
   }
 
   updateUserScore(int score) async {
-    if (FirebaseAuth.instance.currentUser == null) {
-      return;
-    } else {
-      try {
-        await dataServices.updateUserScore(score);
-      } catch (e) {
-        emit(QuistionsError('Failed to update user score: $e'));
-      }
-    }
+    await dataServices.updateUserScore(score);
   }
 }

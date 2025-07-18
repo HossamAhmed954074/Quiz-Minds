@@ -48,6 +48,14 @@ class AuthServicess {
   Stream<User?> get authStateChanges =>
       FirebaseAuth.instance.authStateChanges();
 
+bool userStillLogedIn() {
+ 
+    return auth.currentUser != null;
+  }
+
+
+
+
   Future<UserCredential> registerUser({
     required String email,
     required String password,
@@ -60,6 +68,7 @@ class AuthServicess {
 
     await firestore.collection('users').doc(auth.currentUser!.uid).set({
       'userName': name,
+      'score':0,
       'email': email,
       'uid': auth.currentUser!.uid,
       'createdAt': DateTime.now(),
@@ -131,6 +140,7 @@ class AuthServicess {
       'userName': googleUser.displayName,
       'email': googleUser.email,
       'uid': auth.currentUser!.uid,
+      'score': 0,
       'createdAt': DateTime.now(),
     });
   }

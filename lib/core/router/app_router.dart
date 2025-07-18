@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quiz_minds/core/services/auth_services.dart';
 import 'package:quiz_minds/core/services/data_services.dart';
@@ -6,7 +7,6 @@ import 'package:quiz_minds/features/auth/presentation/view/screens/auth_screen.d
 import 'package:quiz_minds/features/auth/presentation/view_model/cubit/auth_cubit.dart';
 import 'package:quiz_minds/features/get_started/presentation/view/screens/get_started_screen.dart';
 import 'package:quiz_minds/features/home/presentation/view/screens/bottom_nav.dart';
-
 import 'package:quiz_minds/features/onboarding/presentation/view/screens/onboarding_screen.dart';
 import 'package:quiz_minds/features/profile/presentation/view/screens/privacy_policy.dart';
 import 'package:quiz_minds/features/profile/presentation/view/screens/profile_screen.dart';
@@ -35,9 +35,19 @@ abstract class AppRouter {
         builder: (context, state) {
           SharedPreferences.getInstance().then((value) {
             if (value.getBool('onboarding') == true) {
-              if (context.mounted) {
-                GoRouter.of(context).go(kGetStartedScreen);
-              }
+              AuthServicess().authStateChanges.listen((User? user) {
+                if (user != null) {
+                  if (context.mounted) {
+                    GoRouter.of(context).go(kNavigationBar);
+                  }
+                } else {
+                  if (context.mounted) {
+                    GoRouter.of(context).go(kGetStartedScreen);
+                  }
+                }
+              });
+            } else {
+               return const OnboardingScreen();
             }
           });
           return const OnboardingScreen();
@@ -45,7 +55,9 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: kGetStartedScreen,
-        builder: (context, state) => const GetStartedScreen(),
+        builder: (context, state) {
+          return const GetStartedScreen();
+        },
       ),
       GoRoute(
         path: kScoreScreen,

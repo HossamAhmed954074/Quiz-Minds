@@ -137,6 +137,7 @@ class _QuitionContentCustomWidgetState
   }
 
   _updateScoreForCurrentUser() {
+    
     context.read<QuistionsCubit>().updateUserScore(score);
     GoRouter.of(context).pushReplacement(AppRouter.kScoreScreen, extra: score);
   }

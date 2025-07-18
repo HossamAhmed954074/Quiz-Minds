@@ -13,7 +13,7 @@
 //   FirebaseFirestore.instance.collection('ListOfQuestions').doc(field).set(data);
 // }
 
-// final quizzes = 
+// final quizzes =
 //   {
 //     'Geography': {
 //       'title': 'Geography Quiz',
@@ -340,9 +340,9 @@
 //           'options': {
 //             '1': 'Germany',
 //             '2': 'France',
-//             '3': 'Poland',
+//          },
+//              '3': 'Poland',
 //             '4': 'Russia',
-//           },
 //           'answer': 'Russia',
 //         },
 //       },
@@ -3361,3 +3361,61 @@
 //     },
 //   };
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:quiz_minds/core/quizes/qq.dart';
+
+Future<void> uploadDataToFireStore() async {
+  for (final sector in arabicQuizzes.entries) {
+   await uploadDataToFireStoreForField(field: sector.key, data: sector.value);
+  }
+}
+
+Future<void> uploadDataToFireStoreForField({
+  required String field,
+  required dynamic data,
+}) async {
+ await FirebaseFirestore.instance.collection('ListOfQuestions').doc(field).set(data);
+}
+
+// final quizzes = {
+//   'جغرافيا': {
+//     'title': 'جغرافيا',
+//     'imageUrl': 'https://example.com/geography.jpg',
+//     'questions': {
+//       '0': {
+//         'correctOptionKey': '3',
+//         'questionText': 'ما هي عاصمة مصر؟',
+//         'options': {
+//           '1': 'الجيزة',
+//           '2': 'الإسكندرية',
+//           '3': 'القاهرة',
+//           '4': 'أسوان',
+//         },
+//         'answer': 'القاهرة',
+//       },
+//       '1': {
+//         'correctOptionKey': '1',
+//         'questionText': 'ما هو أطول نهر في العالم؟',
+//         'options': {
+//           '1': 'نهر النيل',
+//           '2': 'نهر الأمازون',
+//           '3': 'نهر اليانغتسي',
+//           '4': 'نهر المسيسيبي',
+//         },
+//         'answer': 'نهر النيل',
+//       },
+//       // Add more questions as needed
+//       '2': {
+//         'correctOptionKey': '2',
+//         'questionText': 'ما هي أكبر قارة في العالم؟',
+//         'options': {
+//           '1': 'أفريقيا',
+//           '2': 'آسيا',
+//           '3': 'أوروبا',
+//           '4': 'أمريكا الشمالية',
+//         },
+//         'answer': 'آسيا',
+//       },
+//     },
+//   },
+// };

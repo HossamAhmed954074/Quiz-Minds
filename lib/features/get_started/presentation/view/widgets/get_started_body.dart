@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:quiz_minds/core/helper/safe_tab.dart';
 import 'package:quiz_minds/core/router/app_router.dart';
 import 'package:quiz_minds/core/utils/assets.dart';
 import 'package:quiz_minds/core/utils/text_constant.dart';
@@ -52,13 +53,21 @@ class GetStartedBody extends StatelessWidget {
             ElvatedButtonCustomWidget(
               text: TextConstants.signInButton,
               onPressed: () {
-                GoRouter.of(context).push(AppRouter.kAuthintcationScreen);
+                SafeTabb.execute(
+                  context: context,
+                  onTap: () =>
+                      GoRouter.of(context).push(AppRouter.kAuthintcationScreen),
+                );
               },
             ),
             SizedBox(height: 10),
             OutlinedTextButtonCustomWidget(
               onPressed: () {
-                GoRouter.of(context).push(AppRouter.kNavigationBar);
+                SafeTabb.execute(
+                  context: context,
+                  onTap: () =>
+                      GoRouter.of(context).push(AppRouter.kNavigationBar),
+                );
               },
               text: TextConstants.startQuizButton,
             ),

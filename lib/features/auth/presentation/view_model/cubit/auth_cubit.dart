@@ -47,10 +47,13 @@ class AuthCubit extends Cubit<AuthState> {
     try {
         await authServices.signInWithGoogle();
       emit(AuthSuccess());
-    }on   GoogleSignInException catch(e){
+
+    }on GoogleSignInException catch(e){
       emit(GoogleAuthFailure(GoogleSignInExceptionHandler.handleException(e)));
     }
   
 
   }
+
+  
 }
