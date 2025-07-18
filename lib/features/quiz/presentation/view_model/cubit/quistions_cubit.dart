@@ -2,7 +2,6 @@ import 'dart:math';
 
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:meta/meta.dart';
 import 'package:quiz_minds/core/services/data_services.dart';
 import 'package:quiz_minds/features/quiz/data/question_model.dart';
