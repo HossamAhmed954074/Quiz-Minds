@@ -1,59 +1,43 @@
-class QuestionModel {
-  String imageUrl;
-  Map<String, QuestionData> questions;
 
-  QuestionModel({required this.imageUrl, required this.questions});
 
-  factory QuestionModel.fromFirestore(Map<String, dynamic> data) {
-    return QuestionModel(
-      imageUrl: data['imageUrl'] ?? '',
-      questions: (data['questions'] as Map<String, dynamic>).map((key, value) {
-        return MapEntry(
-          key,
-          QuestionData.fromFirestore(value),
-        );
-      }),
-    );
-  }
 
-  Map<String, dynamic> toMap() {
-    return {
-      'imageUrl': imageUrl,
-      'questions': questions.map((key, value) => MapEntry(key, value.toMap())),
-    };
-  }
-}
+class Question {
+  final String questionText;
+  final Opthions options;
+  final String answer;
+  final String correctOptionKey;
 
-class QuestionData {
-  String answer;
-  Map<int, String> options;
-  int correctOptionKey;
-  String questionText;
-
-  QuestionData({
-    required this.answer,
-    required this.options,
-    required this.correctOptionKey,
+  Question({
     required this.questionText,
+    required this.options,
+    required this.answer,
+    required this.correctOptionKey,
   });
 
-  factory QuestionData.fromFirestore(Map<String, dynamic> data) {
-    return QuestionData(
-      answer: data['answer'] ?? '',
-      options: (data['options'] as Map<String, dynamic>).map((key, value) {
-        return MapEntry(int.parse(key), value);
-      }),
-      correctOptionKey: data['correctOptionKey'] ?? 0,
-      questionText: data['questionText'] ?? '',
+  factory Question.fromFirestore( doc) {
+    Map<String, dynamic> data = doc;
+
+    return Question(
+      questionText: data['questionText'],
+      options: Opthions.fromFirestore(data['options']),
+      answer: data['answer'],
+      correctOptionKey: data['correctOptionKey'],
     );
   }
 
-  Map<String, dynamic> toMap() {
-    return {
-      'answer': answer,
-      'options': options.map((key, value) => MapEntry(key.toString(), value)),
-      'correctOptionKey': correctOptionKey,
-      'questionText': questionText,
-    };
+}
+
+class Opthions{
+  Map<int, String> options;
+  Opthions({required this.options});
+
+
+  factory Opthions.fromFirestore(Map<String, dynamic> data) {
+    Map<int, String> options = {};
+    for (var key in data.keys) {
+      options[int.parse(key)] = data[key];
+    }
+    return Opthions(options: options);
   }
+
 }

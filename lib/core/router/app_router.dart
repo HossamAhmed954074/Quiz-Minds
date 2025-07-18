@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:quiz_minds/core/services/auth_services.dart';
+import 'package:quiz_minds/core/services/data_services.dart';
 import 'package:quiz_minds/core/utils/get_it.dart';
 import 'package:quiz_minds/features/auth/presentation/view/screens/auth_screen.dart';
 import 'package:quiz_minds/features/auth/presentation/view_model/cubit/auth_cubit.dart';
@@ -11,6 +12,8 @@ import 'package:quiz_minds/features/profile/presentation/view/screens/privacy_po
 import 'package:quiz_minds/features/profile/presentation/view/screens/profile_screen.dart';
 import 'package:quiz_minds/features/profile/presentation/view_model/cubit/profile_cubit.dart';
 import 'package:quiz_minds/features/quiz/presentation/view/screens/quiz_screen.dart';
+import 'package:quiz_minds/features/quiz/presentation/view/screens/score_screen.dart';
+import 'package:quiz_minds/features/quiz/presentation/view_model/cubit/quistions_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -23,6 +26,7 @@ abstract class AppRouter {
   static const kNavigationBar = '/navigation';
   static const kPrivacyPolicyScreen = '/privacy-policy';
   static const kQuizScreen = '/quiz';
+  static const kScoreScreen = '/score';
 
   static final GoRouter router = GoRouter(
     routes: [
@@ -44,12 +48,19 @@ abstract class AppRouter {
         builder: (context, state) => const GetStartedScreen(),
       ),
       GoRoute(
+        path: kScoreScreen,
+        builder: (context, state) => const ScoreScreen(),
+      ),
+      GoRoute(
         path: kNavigationBar,
         builder: (context, state) => const BottomNav(),
       ),
       GoRoute(
         path: kQuizScreen,
-        builder: (context, state) => const QuizScreen(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => QuistionsCubit(getIt<DataServices>()),
+          child: const QuizScreen(),
+        ),
       ),
       GoRoute(
         path: kProfileScreen,

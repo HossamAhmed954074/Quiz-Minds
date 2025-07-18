@@ -6,7 +6,7 @@ sealed class QuistionsState {}
 final class QuistionsInitial extends QuistionsState {}
 final class QuistionsLoading extends QuistionsState {}
 final class QuistionsLoaded extends QuistionsState {
-  final List<QuestionModel> quistions;
+  final Set<Question> quistions;
   QuistionsLoaded(this.quistions);
 }
 final class QuistionsError extends QuistionsState {
