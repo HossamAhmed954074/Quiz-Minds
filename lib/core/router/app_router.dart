@@ -14,7 +14,7 @@ import 'package:quiz_minds/features/profile/presentation/view_model/cubit/profil
 import 'package:quiz_minds/features/quiz/presentation/view/screens/quiz_screen.dart';
 import 'package:quiz_minds/features/quiz/presentation/view/screens/score_screen.dart';
 import 'package:quiz_minds/features/quiz/presentation/view_model/cubit/quistions_cubit.dart';
-import 'package:quiz_minds/features/rating/presentation/view/screens/rating_screen.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

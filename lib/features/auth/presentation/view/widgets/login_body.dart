@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
-import 'package:quiz_minds/core/quizes/quiz.dart';
+
 import 'package:quiz_minds/core/router/app_router.dart';
 import 'package:quiz_minds/core/utils/text_constant.dart';
 import 'package:quiz_minds/core/widgets/show_circle_indecator.dart';
