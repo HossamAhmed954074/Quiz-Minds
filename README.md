@@ -87,10 +87,8 @@ dependencies:
   path_provider: 
   shared_preferences: 
 
-https://github.com/user-attachments/assets/25cf90e8-ea61-4edd-9d08-17c2b83abc5c
+<img width="2979" height="3824" alt="output" src="https://github.com/user-attachments/assets/72298481-16ef-4e02-b066-db5c58eda5ae" />
 
 
-  smooth_page_indicator:
-<img width="2979" height="3824" alt="output" src="https://github.com/user-attachments/assets/030f6a42-effb-4606-912e-73d2588b8415" />
 
 
