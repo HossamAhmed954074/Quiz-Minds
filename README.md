@@ -1,16 +1,96 @@
-# quiz_minds
+# Quiz Minds 🧠📱
 
-A new Flutter project.
+Quiz Minds is a modern Flutter-based quiz app designed with clean architecture principles, state management using BLoC, and full Firebase integration. The app is structured for scalability, testability, and high performance.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 🚀 Features
 
-A few resources to get you started if this is your first Flutter project:
+- 🔐 Firebase Authentication (including Google Sign-In)
+- 🧠 BLoC for robust state management
+- 💾 SharedPreferences for local storage
+- 📡 Connectivity checking
+- 📊 Leaderboard management
+- 🎯 Portrait-only orientation
+- ✅ Tree-shaking optimization to reduce app size
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 📂 Project Structure
+
+lib/
+├── main.dart
+├── firebase_options.dart
+├── core/
+│ ├── errors/ # Firebase & Google sign-in failure handlers
+│ ├── helper/ # Utility helpers (connectivity, tabs, etc.)
+│ ├── quizes/ # Quiz models
+│ ├── router/ # AppRouter (MaterialApp.router based navigation)
+│ ├── secrets/ # API keys or secrets (example file)
+│ ├── services/ # Auth, data, and leaderboard services
+│ ├── utils/ # Constants, styles, asset paths
+│ └── widgets/ # Shared UI widgets (snackbars, loaders)
+├── features/
+│ ├── auth/ # Firebase Auth & Google sign-in 
+│ ├── getStarted/ # Screen to Go LogIn/SignIn or go as Guist
+│ ├── home/ # have categories and Bottom NavigationBar
+│ ├── onBoarding/ # simple image to show what is app
+│ ├── profile/ # as a user info and some sittengs
+│ ├── quizes/ # as a quizes categories and make a quiz
+│ ├── rating/ # have a all Rating users in app and top 3 and top 10
+
+
+
+yaml
+Copy
+Edit
+
+---
+
+## 🧪 State Management
+
+The app uses **BLoC (Business Logic Component)** to manage state in a reactive and testable way. This ensures better separation between UI and business logic.
+
+---
+
+## 💾 Local Storage
+
+`SharedPreferences` is used to:
+- Store first-time app launch flag
+- Persist basic user session settings
+
+---
+
+## 🔧 Dependencies
+
+```yaml
+dependencies:
+  bloc: 
+  cached_network_image: 
+  cloud_firestore:
+  connectivity_plus: 
+  cupertino_icons: 
+  curved_navigation_bar:
+  firebase_auth: 
+  firebase_core: 
+  flutter_bloc: 
+  flutter_native_splash: 
+  font_awesome_flutter: 
+  get_it: 
+  go_router: 
+  google_sign_in: 
+  http: 
+  image_picker: 
+  loading_indicator: 
+  lottie: 
+  meta: 
+  path_provider: 
+  shared_preferences: 
+
+https://github.com/user-attachments/assets/25cf90e8-ea61-4edd-9d08-17c2b83abc5c
+
+
+  smooth_page_indicator:
+<img width="2979" height="3824" alt="output" src="https://github.com/user-attachments/assets/030f6a42-effb-4606-912e-73d2588b8415" />
+
+
