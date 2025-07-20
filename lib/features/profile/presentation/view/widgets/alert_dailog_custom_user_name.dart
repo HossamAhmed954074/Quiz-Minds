@@ -23,6 +23,7 @@ class _AlertDaialogCustomUpdateUserNameState
   void dispose() {
     super.dispose();
     _userNameController.dispose();
+    _formKey.currentState?.dispose();
   }
 
   resetUserName() {

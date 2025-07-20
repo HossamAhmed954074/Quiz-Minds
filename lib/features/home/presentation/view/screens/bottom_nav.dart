@@ -2,6 +2,7 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:quiz_minds/features/home/presentation/view/screens/home_screen.dart';
 import 'package:quiz_minds/features/profile/presentation/view/screens/profile_screen.dart';
+import 'package:quiz_minds/features/rating/presentation/view/screens/rating_screen.dart';
 
 class BottomNav extends StatefulWidget {
   const BottomNav({super.key});
@@ -18,7 +19,7 @@ class _BottomNavState extends State<BottomNav> {
     Icon(Icons.person_outlined),
   ];
 
-  List<Widget> pages = [HomeScreen(), HomeScreen(), ProfileScreen()];
+  List<Widget> pages = [HomeScreen(), RatingScreen(), ProfileScreen()];
 
   @override
   Widget build(BuildContext context) {

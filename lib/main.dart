@@ -1,7 +1,10 @@
+
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:quiz_minds/core/router/app_router.dart';
+
 import 'package:quiz_minds/core/utils/get_it.dart';
 import 'package:quiz_minds/firebase_options.dart';
 
@@ -11,7 +14,7 @@ Future<void> main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]); 
   setup();
   runApp(const MyApp());
 }

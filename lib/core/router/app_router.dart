@@ -14,6 +14,7 @@ import 'package:quiz_minds/features/profile/presentation/view_model/cubit/profil
 import 'package:quiz_minds/features/quiz/presentation/view/screens/quiz_screen.dart';
 import 'package:quiz_minds/features/quiz/presentation/view/screens/score_screen.dart';
 import 'package:quiz_minds/features/quiz/presentation/view_model/cubit/quistions_cubit.dart';
+import 'package:quiz_minds/features/rating/presentation/view/screens/rating_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -27,6 +28,7 @@ abstract class AppRouter {
   static const kPrivacyPolicyScreen = '/privacy-policy';
   static const kQuizScreen = '/quiz';
   static const kScoreScreen = '/score';
+
 
   static final GoRouter router = GoRouter(
     routes: [
@@ -59,6 +61,7 @@ abstract class AppRouter {
           return const GetStartedScreen();
         },
       ),
+
       GoRoute(
         path: kScoreScreen,
         builder: (context, state) => const ScoreScreen(),

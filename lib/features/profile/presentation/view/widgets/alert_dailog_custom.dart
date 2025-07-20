@@ -36,6 +36,7 @@ class _AlertDialogCustomWidgetState extends State<AlertDialogCustomWidget> {
     _emailController.dispose();
     _oldPasswordController.dispose();
     _newPasswordController.dispose();
+    _formKey.currentState?.dispose();
   }
 
   @override
@@ -56,7 +57,7 @@ class _AlertDialogCustomWidgetState extends State<AlertDialogCustomWidget> {
             AlertDialog(
               backgroundColor: Colors.blueAccent,
               title: Text(
-                'Change password',
+                'Change Password',
                 style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
               ),
               content: Form(
@@ -80,6 +81,7 @@ class _AlertDialogCustomWidgetState extends State<AlertDialogCustomWidget> {
                     ),
                     SizedBox(height: 20),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         ElevatedButton(
                           onPressed: () {
@@ -96,7 +98,7 @@ class _AlertDialogCustomWidgetState extends State<AlertDialogCustomWidget> {
 
                            
                           },
-                          child: Text('Change password'),
+                          child: Text('Change'),
                         ),
                       ],
                     ),

@@ -48,13 +48,9 @@ class AuthServicess {
   Stream<User?> get authStateChanges =>
       FirebaseAuth.instance.authStateChanges();
 
-bool userStillLogedIn() {
- 
+  bool userStillLogedIn() {
     return auth.currentUser != null;
   }
-
-
-
 
   Future<UserCredential> registerUser({
     required String email,
@@ -68,7 +64,7 @@ bool userStillLogedIn() {
 
     await firestore.collection('users').doc(auth.currentUser!.uid).set({
       'userName': name,
-      'score':0,
+      'score': 0,
       'email': email,
       'uid': auth.currentUser!.uid,
       'createdAt': DateTime.now(),
@@ -105,6 +101,7 @@ bool userStillLogedIn() {
     );
     await currentUser!.reauthenticateWithCredential(credential);
     await currentUser!.delete();
+    deleteUserAndField();
     await signOut();
   }
 
@@ -136,13 +133,30 @@ bool userStillLogedIn() {
       idToken: googleAuth.idToken,
     );
     await auth.signInWithCredential(credential);
+    int score = 0;
+    var oldScore = await firestore
+        .collection('users')
+        .doc(auth.currentUser!.uid)
+        .get()
+        .then((value) => value.data()!['score']);
+    if (oldScore == null) {
+      score = 0;
+    } else {
+      score = oldScore;
+    }
+
     await firestore.collection('users').doc(auth.currentUser!.uid).set({
       'userName': googleUser.displayName,
       'email': googleUser.email,
       'uid': auth.currentUser!.uid,
-      'score': 0,
+      'score': score,
       'createdAt': DateTime.now(),
     });
+  }
+
+  deleteUserAndField() {
+    firestore.collection('users').doc(auth.currentUser!.uid).delete();
+
   }
 
   signOutWithGoogle() async {

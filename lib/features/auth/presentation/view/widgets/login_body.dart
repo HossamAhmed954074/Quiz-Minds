@@ -31,6 +31,7 @@ class _LoginBodyState extends State<LoginBody> {
     super.dispose();
     emailController.dispose();
     passwordController.dispose();
+    formKey.currentState?.dispose();
   }
 
   void logIn() {

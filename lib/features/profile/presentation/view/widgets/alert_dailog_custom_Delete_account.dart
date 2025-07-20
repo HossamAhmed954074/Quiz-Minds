@@ -49,6 +49,7 @@ class _AlertDaialogCustomDeleteAccountState
     super.dispose();
     _emailController.dispose();
     _passwordController.dispose();
+    _formKey.currentState?.dispose();
   }
 
   @override
@@ -111,7 +112,7 @@ class _AlertDaialogCustomDeleteAccountState
                               deleteAccount();
                             }
                           },
-                          child: Text('Delete account'),
+                          child: Text('Delete '),
                         ),
                       ],
                     ),

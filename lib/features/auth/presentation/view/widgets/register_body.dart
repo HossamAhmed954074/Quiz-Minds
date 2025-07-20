@@ -29,6 +29,7 @@ class _RegisterBodyState extends State<RegisterBody> {
     _nameController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
+    _formKey.currentState?.dispose();
   }
 
   void _register() async {
