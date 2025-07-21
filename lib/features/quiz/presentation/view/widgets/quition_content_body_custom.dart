@@ -136,10 +136,42 @@ class _QuitionContentCustomWidgetState
     );
   }
 
-  _updateScoreForCurrentUser() {
-    
-    context.read<QuistionsCubit>().updateUserScore(score);
-    GoRouter.of(context).pushReplacement(AppRouter.kScoreScreen, extra: score);
+  _updateScoreForCurrentUser() async {
+    if (selectedOption != null) {
+      if (selectedOption == widget.question.answer) {
+        setState(() {
+          score += 10;
+          isClecked1 = false;
+          isClecked2 = false;
+          isClecked3 = false;
+          isClecked4 = false;
+        });
+        showSnakBarSuccess(context, 'Correct Answer!');
+      } else {
+        showSnakBarFaluire(
+          context,
+          'Wrong Answer! : ('
+          'Correct Answer: ${widget.question.answer}',
+        );
+        setState(() {
+          isClecked1 = false;
+          isClecked2 = false;
+          isClecked3 = false;
+          isClecked4 = false;
+        });
+        widget.onNext?.call();
+      }
+    } else {
+      showSnakBarFaluire(context, 'Please select an option');
+    }
+  
+    await Future.delayed(const Duration(milliseconds: 500));
+    if (mounted) {
+      context.read<QuistionsCubit>().updateUserScore(score);
+      GoRouter.of(
+        context,
+      ).pushReplacement(AppRouter.kScoreScreen, extra: score);
+    }
   }
 
   _submitAnswer() {
