@@ -59,35 +59,7 @@ The app uses **BLoC (Business Logic Component)** to manage state in a reactive a
 - Store first-time app launch flag
 - Persist basic user session settings
 
----
 
-## 🔧 Dependencies
-
-```yaml
-dependencies:
-  bloc: 
-  cached_network_image: 
-  cloud_firestore:
-  connectivity_plus: 
-  cupertino_icons: 
-  curved_navigation_bar:
-  firebase_auth: 
-  firebase_core: 
-  flutter_bloc: 
-  flutter_native_splash: 
-  font_awesome_flutter: 
-  get_it: 
-  go_router: 
-  google_sign_in: 
-  http: 
-  image_picker: 
-  loading_indicator: 
-  lottie: 
-  meta: 
-  path_provider: 
-  shared_preferences: 
-
-<img width="2979" height="3824" alt="output" src="https://github.com/user-attachments/assets/72298481-16ef-4e02-b066-db5c58eda5ae" />
 
 
 
