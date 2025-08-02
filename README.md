@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Quiz Minds 🧠📱
 
 Quiz Minds is a modern Flutter-based quiz app designed with clean architecture principles, state management using BLoC, and full Firebase integration. The app is structured for scalability, testability, and high performance.
@@ -65,3 +66,5 @@ The app uses **BLoC (Business Logic Component)** to manage state in a reactive a
 
 <img width="1024" height="500" alt="Screenshot_from_2025-07-22_14-47-14_optimized" src="https://github.com/user-attachments/assets/76a2346b-dca2-4c17-9523-cf58849ad813" />
 
+=======
+>>>>>>> 42207ec (Update Readme file and make it profisional)
