@@ -231,9 +231,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 👨‍💻 Developer
 
 **Hossam Ahmed**
-- 📧 Email: your.email@example.com
-- 🔗 LinkedIn: [Your LinkedIn Profile](https://linkedin.com/in/yourprofile)
-- 🐙 GitHub: [@yourusername](https://github.com/yourusername)
+- 📧 Email: eltohamehossam@gmail.com
+- 🔗 LinkedIn: [Your LinkedIn Profile](https://www.linkedin.com/in/hossam-ahmed-ab4987248/)
+- 🐙 GitHub: [@yourusername](https://github.com/HossamAhmed954074)
 
 ---
 
